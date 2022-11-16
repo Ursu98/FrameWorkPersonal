@@ -1,0 +1,21 @@
+1. Initializam proiectul npm V
+2. Implementam webPack-ul V
+3. Configuram webPack-ul V
+---------------------------------
+4. Configurare ESLint
+---------------------------------
+5. Creare Template
+  5.1 Normalize CSS
+  5.2 DEFAULT STYLES
+  5.3 Create SCSS de baza
+  5.4 BEM 
+  5.5 Header
+  5.6 Toolbar
+  5.7 Formula
+  5.8 Table
+  5.9 Dashboard
+
+
+  ------------------------------------
+  HomeWork:
+  De structurat scss
