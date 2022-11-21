@@ -4,11 +4,32 @@
     "es6": true,
     "browser": true,
     "node": true
-    
   },
-  "extends": ["eslint:recommended","google"],
+  "extends": [
+    "eslint:recommended",
+    "google"
+  ],
   "rules": {
-
-    "quotes": ["error", "double"]
+    "object-curly-spacing": "off",
+    "no-trailing-spaces": 0,
+    "quotes": [
+      "error",
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": false,
+          "ClassDeclaration": false,
+          "ArrowFunctionExpression": false,
+          "FunctionExpression": false
+        }
+      }
+    ]
   }
 }
