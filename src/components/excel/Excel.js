@@ -1,31 +1,24 @@
-/**
- * export class Excel
- */
+import { $ } from "@core/dom";
+
 export class Excel {
-  /**
-   * create constructor
-   * @param {string} selector
-   * @param {{components: *[]}} options
-   */
   constructor(selector, options) {
-    this.$el = document.querySelector(selector);
+    this.$el = $(selector);
     this.components = options.components || [];
   }
 
   getRoot() {
-    const $root = document.createElement("div");
-    this.components.forEach((Component) => {
-      const component = new Component();
-      // console.log(component);
-      // console.log(component.toHTML());
-      $root.insertAdjacentHTML("beforeend", component.toHTML());
+    const $root = $.create("div", "excel");
+    this.components = this.components.map((Component) => {
+      const $el = $.create("div", Component.className);
+      const component = new Component($el);
+      $el.html(component.toHTML());
+      $root.append($el);
+      return component;
     });
     return $root;
   }
 
   render() {
-    const nod = document.createElement("h1");
-    nod.textContent = "privet Brat";
     this.$el.append(this.getRoot());
   }
 }

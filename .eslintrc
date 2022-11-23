@@ -19,17 +19,16 @@
         "allowTemplateLiterals": true
       }
     ],
-    "require-jsdoc": [
+    "operator-linebreak": [
       "error",
+      "after",
       {
-        "require": {
-          "FunctionDeclaration": true,
-          "MethodDefinition": false,
-          "ClassDeclaration": false,
-          "ArrowFunctionExpression": false,
-          "FunctionExpression": false
+        "overrides": {
+          ":": "before",
+          "?": "before"
         }
       }
-    ]
+    ],
+    "require-jsdoc": 0
   }
 }
