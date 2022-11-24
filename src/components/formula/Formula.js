@@ -8,7 +8,6 @@ export class Formula extends ExcelComponent {
             fx
         </div>
         <div class="input" contenteditable spellcheck="false">
-
         </div>`;
   }
 }
