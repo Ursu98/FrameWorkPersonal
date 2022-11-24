@@ -2,7 +2,7 @@ import { DOMListner } from "@core/DOMListner";
 
 export class ExcelComponent extends DOMListner {
   constructor($root, options = {}) {
-    super($root, options.listners);
+    super($root, options.listeners);
   }
 
   toHTML() {
@@ -10,6 +10,6 @@ export class ExcelComponent extends DOMListner {
   }
 
   init() {
-    this.initDomListners();
+    this.initDomListeners();
   }
 }

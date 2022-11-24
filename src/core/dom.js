@@ -8,7 +8,7 @@ class Dom {
 
   html(html) {
     if (typeof html === "string") {
-      console.log(111, this.$el);
+      // console.log(111, this.$el);
       this.$el.innerHTML = html;
       return this;
     }
@@ -29,6 +29,10 @@ class Dom {
     } else {
       this.$el.appendChild(node);
     }
+  }
+
+  on(eventType, callback) {
+    this.$el.addEventListener(eventType, callback);
   }
 }
 
