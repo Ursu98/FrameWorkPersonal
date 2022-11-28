@@ -16,11 +16,29 @@ export class DOMListner {
   initDomListeners() {
     this.listeners.forEach((listener) => {
       const method = getMethodName(listener);
+      const name = this.name || "";
+      if (!this[method]) {
+        throw new Error(`
+       Method: ${method}, is not implemented in ${name} Component
+        `);
+      }
+      this[method] = this[method].bind(this);
       this.$root.on(listener, this[method]);
     });
   }
 
-  removeDomListners() {
+  removeDomListeners() {
+    this.listeners.forEach((listener) => {
+      const method = getMethodName(listener);
+      const name = this.name || "";
+      if (this[!method]) {
+        throw new Error(`
+       Method: ${method}, is implemented in ${name} Component
+        `);
+      }
+      this[method] = this[method].bind(this);
+      this.$root.off(listener, this[method]);
+    });
     console.log(1231, this.listeners);
   }
 }
