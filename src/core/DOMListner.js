@@ -1,3 +1,9 @@
+import { capitalise } from "@core/utils";
+
+const getMethodName = (eventName) => {
+  return "on" + capitalise(eventName);
+};
+
 export class DOMListner {
   constructor($root, listeners = []) {
     if (!$root) {
@@ -8,15 +14,9 @@ export class DOMListner {
   }
 
   initDomListeners() {
-    // console.log("This listners: ", this.listners);
     this.listeners.forEach((listener) => {
-      console.log(123, listener);
-      console.log(this.$root);
-      this.$root.on(listener, () => {
-        // console.log("ciota vrode tuta", listener);
-        const method = "on" + listener[0].toUpperCase() + listener.slice(1);
-        console.log("method", method);
-      });
+      const method = getMethodName(listener);
+      this.$root.on(listener, this[method]);
     });
   }
 

@@ -9,9 +9,12 @@ export class Formula extends ExcelComponent {
       listeners: ["input", "click"],
     });
   }
-
   onInput(event) {
+    console.log(event.target.textContent.trim());
     console.log("Formula onInput", event);
+  }
+  onClick(event) {
+    console.log("Formula onClick", event);
   }
 
   toHTML() {
