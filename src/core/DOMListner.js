@@ -31,7 +31,7 @@ export class DOMListner {
     this.listeners.forEach((listener) => {
       const method = getMethodName(listener);
       const name = this.name || "";
-      if (this[!method]) {
+      if (!this[method]) {
         throw new Error(`
        Method: ${method}, is implemented in ${name} Component
         `);
