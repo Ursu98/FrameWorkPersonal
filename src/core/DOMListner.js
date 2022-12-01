@@ -7,7 +7,7 @@ const getMethodName = (eventName) => {
 export class DOMListner {
   constructor($root, listeners = []) {
     if (!$root) {
-      throw new Error("No root provider from DOMListner");
+      throw new Error("No root provider from DOMListener");
     }
     this.$root = $root;
     this.listeners = listeners;
