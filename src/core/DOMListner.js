@@ -39,6 +39,6 @@ export class DOMListner {
       this[method] = this[method].bind(this);
       this.$root.off(listener, this[method]);
     });
-    console.log(1231, this.listeners);
+    // console.log(1231, this.listeners);
   }
 }

@@ -17,15 +17,23 @@ export class Table extends ExcelComponent {
   onMousedown(event) {
     if (event.target.dataset.resize) {
       const resizer = $(event.target);
-      // const parent = resizer.$el.parentNode; // BAD
-      // const parent = resizer.$el.closest(".column");// BET but still bed
-      const parent = resizer.closest("[data-type= \"resizable\"]");
-      console.log("--- Parent", parent);
-      // console.log(resizer.$el.getBoundingClientRect());
-      console.log(222, parent.getCords());
-      // console.log("event", event.target);
-      // console.log("Start_Resizing - Table onMousedown",
-      //     event.target.dataset.resize);
+      const $parent = resizer.closest("[data-type= \"resizable\"]");
+      const cords = $parent.getCords();
+      document.onmousemove = (event) =>{
+        const delta = event.pageX - cords.right;
+        console.log("rest--", delta);
+        const value = cords.width + delta;
+        $parent.$el.style.width = value + "px";
+        console.log("parent data---", $parent.data);
+        document.querySelectorAll(`[data-col = "${$parent.data.col}"]`)
+            .forEach((el) =>{
+              console.log(11, el);
+              el.style.width = value + "px";
+            });
+      };
+      document.onmouseup = () =>{
+        document.onmousemove = null;
+      };
     }
   }
 

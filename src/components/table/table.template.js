@@ -17,18 +17,20 @@ const createRow = (index, content) => {
   `;
 };
 
-const createCol = (col) => {
+const createCol = (col, id) => {
+  // console.log("sadas", id);
   return `
-    <div class="column" data-type="resizable">
+    <div class="column" data-type="resizable" data-col="${id}">
       ${col}
       <div class="col-resize " data-resize="col" ></div>
     </div>
   `;
 };
 
-const createCell = () => {
+const createCell = (_, col) => {
+  // console.log("index col", col);
   return `
-<div class="cell" contenteditable="true"></div>
+<div class="cell" contenteditable="true" data-col="${col}"></div>
 `;
 };
 const toChar = (_, index) =>{
