@@ -41,13 +41,31 @@ class Dom {
   getCords() {
     return this.$el.getBoundingClientRect();
   }
-
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback);
   }
 
   off(eventType, callback) {
     this.$el.removeEventListener(eventType, callback);
+  }
+  //   {
+  // width: "30px",
+  // height: "42px",
+  // backgroundColor: "red",
+  //   }
+
+  css(styles = {}) {
+    // for (const styleKey in styles) {
+    //   if (styles.hasOwnProperty.call(styleKey)) {
+    //     console.log("styleKey", styleKey);
+    //     console.log(123123, styles[styleKey]);
+    //     this.$el.style[styleKey] = styles[styleKey];
+    //   }
+    // }
+    Object.keys(styles).forEach((keys) => {
+      console.log(keys, 111);
+      this.$el.style[keys] = styles[keys];
+    });
   }
 }
 

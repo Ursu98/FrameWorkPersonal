@@ -5,10 +5,7 @@
     "browser": true,
     "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "google"
-  ],
+  "extends": ["eslint:recommended", "google"],
   "rules": {
     "object-curly-spacing": "off",
     "no-trailing-spaces": 0,
@@ -29,6 +26,7 @@
         }
       }
     ],
+    "indent": ["error", 2],
     "require-jsdoc": 0
   }
 }
