@@ -11,53 +11,49 @@ export class Table extends ExcelComponent {
     });
   }
 
-  onClick(event) {
-    console.log("Table onclick", event.target);
-  }
+  // onClick(event) {
+  //   console.log("Table onclick", event.target);
+  // }
   onMousedown(event) {
     if (event.target.dataset.resize) {
+      console.log(11122, event.target);
       const resizer = $(event.target);
       const $parent = resizer.closest("[data-type= 'resizable']");
       const type = resizer.data.resize;
       console.log(type, 11);
       const cords = $parent.getCords();
+
+      const sideProp = type === "col" ? "bottom" : "right";
+      resizer.css({ opacity: 1, zIndex: 1000, [sideProp]: "-2000px" });
+      let delta;
+      let value;
+
       document.onmousemove = (event) => {
         if (type === "col") {
-          const delta = event.pageX - cords.right;
-          console.log("rest--", delta);
-          const value = cords.width + delta;
-          // $parent.$el.style.width = value + "px";
-          $parent.css({
-            width: value + "px",
-            color: "green",
-          });
-          console.log(11111111, $parent);
-          console.log("parent data---", $parent.data);
+          delta = event.pageX - cords.right;
+          value = cords.width + delta;
+          resizer.css({ right: -delta + "px" });
+        } else {
+          delta = event.pageY - cords.bottom;
+          value = cords.height + delta;
+          resizer.css({ bottom: -delta + "px" });
+        }
+      };
+      document.onmouseup = () => {
+        document.onmousemove = null;
+        document.onmouseup = null;
+        resizer.css({ opacity: 0, bottom: 0, right: 0 });
+
+        if (type === "col") {
           document
             .querySelectorAll(`[data-col = "${$parent.data.col}"]`)
             .forEach((el) => {
               el.style.width = value + "px";
             });
+          $parent.css({ width: value + "px" });
         } else {
-          console.log(11111111, $parent);
-
-          const delta = event.pageY - cords.bottom;
-          const value = cords.height + delta;
-          console.log(value);
-          // $parent.$el.style.height = value + "px";
-          $parent.css({
-            height: value + "px",
-            color: "red",
-          });
-          // document
-          //     .querySelectorAll(`[data-row="${$parent.data.row}"]`)
-          //     .forEach((el) => {
-          //       el.style.height = value + "px";
-          //     });
+          $parent.css({ height: value + "px" });
         }
-      };
-      document.onmouseup = () => {
-        document.onmousemove = null;
       };
     }
   }

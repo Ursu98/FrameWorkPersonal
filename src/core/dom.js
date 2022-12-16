@@ -48,11 +48,6 @@ class Dom {
   off(eventType, callback) {
     this.$el.removeEventListener(eventType, callback);
   }
-  //   {
-  // width: "30px",
-  // height: "42px",
-  // backgroundColor: "red",
-  //   }
 
   css(styles = {}) {
     // for (const styleKey in styles) {

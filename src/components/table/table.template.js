@@ -5,7 +5,7 @@ const CODES = {
 
 const createRow = (index, content) => {
   const resizer = index
-    ? "<div class = 'row-resize' " + "data-resize='row'  > </div>"
+    ? " <div class = 'row-resize ' " + "data-resize='row'  > </div>"
     : "";
   return `
     <div class = "row" data-type = "resizable" >
